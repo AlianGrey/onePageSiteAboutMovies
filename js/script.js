@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     // 1)
     const adv = document.querySelectorAll('.promo__adv img'),
+        deleteAdvImgBtn = document.querySelector('.deleteAdvImg'),
         promo = document.querySelector('.promo__bg'),
         genre = promo.querySelector('.promo__genre'),
         movieList = document.querySelector('.promo__interactive-list'),
@@ -37,6 +38,16 @@ document.addEventListener('DOMContentLoaded', () => {
         checkbox = document.querySelector('[type=checkbox]'),
         delMovie = document.querySelector('.delete');
 
+    const deleteAdv = (arr) => {
+        arr.forEach(item => {
+            item.remove();
+        });
+    }; 
+
+
+    deleteAdvImgBtn.addEventListener('click', () => {
+        deleteAdv(adv)
+    })
 
     //1, 2, 4, 5)
     addForm.addEventListener('submit', (event) => {
@@ -64,15 +75,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    const deleteAdv = (arr) => {
-        arr.forEach(item => {
-            item.remove();
-        });
-    };
-
     const makeChanges = () => {
         genre.textContent = 'ДРАМА';
-        promo.style.backgroundImage = 'url("../img/bg.jpg")';
+        promo.style.backgroundImage = 'url("./img/bg.jpg")';
     };
 
     const sortArr = (arr) => {
@@ -100,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    deleteAdv(adv);
+    //deleteAdv(adv);
     makeChanges();
     createMovieList(movieDB.movies, movieList);
 
